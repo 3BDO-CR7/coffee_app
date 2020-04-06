@@ -119,7 +119,7 @@ class OrderDet_client extends Component {
     });
 
     checkPay(payID){
-        if(payID === 'buy_with_visa' || payID === 'buy_with_wallet'){
+        if(payID === 'buy_with_visa'){
             Toast.show({
                 text: i18n.t('notyet'),
                 duration : 2000 ,
