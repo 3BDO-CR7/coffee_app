@@ -1,0 +1,54 @@
+{
+  "expo": {
+    "name": "coffee_app",
+    "slug": "coffee_app",
+    "privacy": "public",
+    "sdkVersion": "35.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "version": "1.0.6",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.shabaka.yumyum",
+
+      "infoPlist": {
+        "UIBackgroundModes": [
+          "location",
+          "fetch"
+        ],
+        "NSCameraUsageDescription": "We need this permession to add photos to your ads.",
+        "NSLocationWhenInUseUsageDescription": "app need location to show the nearest ads of you.",
+        "NSLocationAlwaysUsageDescription": "app need location to show the nearest ads of you.",
+        "NSMotionUsageDescription": "app need location to show the nearest ads of you.",
+        "NSPhotoLibraryAddUsageDescription": "We need this permession to add photos to your ads.",
+        "NSPhotoLibraryUsageDescription": "We need this permession to add photos to your ads"
+      }
+
+    },
+    "android": {
+      "package": "com.shabaka.coffee_app",
+      "versionCode": 10,
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyC5uC_mExFIMSehvCgsjegxcF7mTpKmI4w"
+        }
+      }
+    }
+  }
+}
