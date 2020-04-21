@@ -9,7 +9,7 @@
       "android",
       "web"
     ],
-    "version": "1.0.6",
+    "version": "0.0.2",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -25,7 +25,7 @@
     ],
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.shabaka.yumyum",
+      "bundleIdentifier": "com.shabaka.coffeeApp",
 
       "infoPlist": {
         "UIBackgroundModes": [
@@ -42,8 +42,8 @@
 
     },
     "android": {
-      "package": "com.shabaka.coffee_app",
-      "versionCode": 10,
+      "package": "com.shabaka.coffeeApp",
+      "versionCode": 2,
       "config": {
         "googleMaps": {
           "apiKey": "AIzaSyC5uC_mExFIMSehvCgsjegxcF7mTpKmI4w"

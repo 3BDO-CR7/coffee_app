@@ -29,6 +29,7 @@ import * as Location from "expo-location";
 import {Notifications} from "expo";
 import * as Animatable from 'react-native-animatable';
 import StarRating from 'react-native-star-rating';
+import { Util , Updates} from 'expo';
 
 const height = Dimensions.get('window').height;
 
@@ -249,6 +250,7 @@ class Home_client extends Component {
     }
 
     logout(){
+        this.props.navigation.navigate('user');
 
         axios({
             method     : 'post',
@@ -270,11 +272,9 @@ class Home_client extends Component {
                         color: "white",fontFamily : 'cairoBold' ,textAlign:'center'
                     } });
             }else{
-                this.props.navigation.navigate('user');
-                setTimeout(()=>{
-                    this.props.logout({ token: this.props.auth.id });
+                    Updates.reload();
+                    this.props.logout({ token: this.props.auth ? this.props.auth.id : null });
                     this.props.tempAuth();
-                },1500)
             }
 
         }).catch(error => {
@@ -327,8 +327,7 @@ class Home_client extends Component {
 
     renderItems = (item,key) => {
         return(
-            <Animatable.View animation={(key % 2 === 0 ) ? 'fadeInDown' : 'fadeInUp'} duration={2000} iterationCount={1}>
-
+            <Animatable.View animation={(key % 2 === 0 ) ? 'bounceIn' : 'bounceIn'} duration={2000} iterationCount={1}>
                 <TouchableOpacity
                     onPress={() => this.props.navigation.navigate('productDet_client',{place_id :  item.place_id, product_id : item.product_id})}
                     style={[styles.notiBlock , {padding:5, backgroundColor : '#f8f8f8', borderWidth : 1, borderColor : '#DDD'}]}
@@ -336,8 +335,8 @@ class Home_client extends Component {
                     <Image source={{uri : item.image}} resizeMode={'cover'} style={[styles.restImg, {borderWidth : 1, borderColor : '#DDD'}]}/>
                     <View style={[styles.directionColumn , {flex:1}]}>
                         <View style={[styles.directionRowSpace ]}>
-                            <Text style={[styles.boldGrayText , { fontSize : 12, width : 100 } ]} numberOfLines={1} ellipsizeMode='tail'>{item.productName}</Text>
-                            <Text style={[styles.boldGrayText, { color : COLORS.yellow, fontSize : 11 } ]}>{ i18n.t('bychoice') }</Text>
+                            <Text style={[styles.boldGrayText , { fontSize : 13, width : 100 , textAlign:'right' } ]} numberOfLines={1} ellipsizeMode='tail'>{item.productName}</Text>
+                            <Text style={[styles.boldGrayText, { color : COLORS.yellow, fontSize : 11 , fontFamily:'cairoBold' } ]}>{ i18n.t('bychoice') }</Text>
                         </View>
                         <View style={[styles.locationView]}>
                             <Text style={[styles.grayText , {writingDirection: I18nManager.isRTL ? 'rtl' : 'ltr',fontSize:12} ]}>{item.details}</Text>
@@ -360,11 +359,12 @@ class Home_client extends Component {
 
     handleLoadMore = () => {
 
-        if(this.state.products.length > 12){
-            this.getResults();
-        }
+        //if(this.state.products.length > 12){
+          //  this.getResults();
+        //}
 
     };
+
 
     products(id) {
 
@@ -468,14 +468,14 @@ class Home_client extends Component {
                             </View>
 
                             <View style={[ styles.rowAlgin, { padding : 10, marginVertical: 10 } ]}>
-                                <View style={{ width : 55 , height : 55, borderRadius : 50, position: 'relative', overflow : 'hidden', justifyContent:'center' , alignItems:'center', alignSelf : 'center',backgroundColor:'rgba(255,255,255,0.5)'}}>
+                                <View style={{ width : 55 , height : 55, borderRadius : 40, position: 'relative', overflow : 'hidden', justifyContent:'center' , alignItems:'center', alignSelf : 'center',backgroundColor:'rgba(255,255,255,0.5)'}}>
                                     <Image
-                                        style={{resizeMode : 'cover' , width : 50 , height : 50, borderRadius : 50, padding: 5  }}
+                                        style={{resizeMode : 'cover' , width : 60 , height : 60, borderRadius : 35  }}
                                         source={{ uri : this.state.imgUser }}
                                     />
                                 </View>
                                 <View style={{ paddingHorizontal : 10 }}>
-                                    <Text style={{ fontFamily: I18nManager.isRTL ? 'cairo' : 'openSans', fontSize : 14, color : "#FFF" }}>
+                                    <Text style={{ fontFamily: I18nManager.isRTL ? 'cairo' : 'openSans', fontSize : 14, color : "#FFF" ,textAlign:'left'}}>
                                         { this.state.nameUser }
                                     </Text>
                                     <View style={[ styles.rowAlgin ]}>
@@ -531,7 +531,7 @@ class Home_client extends Component {
                                     (this.state.categories.map((category,i)=> {
 
                                         return (
-                                            <TouchableOpacity key={i} onPress={ () => this.products( category.menu_id )} style={styles.scrollView}>
+                                            <TouchableOpacity key={i} onPress={ () => this.products( category.menu_id )} style={[styles.scrollView]}>
                                                 <Text style={[styles.scrollText,{color:this.state.menu_id === category.menu_id ? COLORS.black : COLORS.boldGray}]}>{ category.menuName }</Text>
                                                 <View style={[styles.triangle , {borderBottomColor:this.state.menu_id === category.menu_id ? COLORS.black : 'transparent'}]} />
                                             </TouchableOpacity>

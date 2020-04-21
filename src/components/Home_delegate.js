@@ -34,6 +34,7 @@ import {AnimatedRegion} from "react-native-maps";
 import * as BackgroundFetch from 'expo-background-fetch';
 import * as TaskManager from 'expo-task-manager';
 import * as Location from 'expo-location';
+import { Util , Updates} from 'expo';
 
 const height = Dimensions.get('window').height;
 
@@ -194,6 +195,7 @@ class Home_delegate extends Component {
     }
 
     logout() {
+        this.props.navigation.navigate('user');
 
         if(this.props.user)
         {
@@ -218,11 +220,9 @@ class Home_delegate extends Component {
                         }
                     });
                 } else {
-                    this.props.navigation.navigate('user');
-                    setTimeout(() => {
-                        this.props.logout({token: this.props.auth.id});
+                        // Updates.reload();
+                        this.props.logout({token: this.props.auth ? this.props.auth.id : null});
                         this.props.tempAuth();
-                    }, 1500)
                 }
 
             }).catch(error => {
