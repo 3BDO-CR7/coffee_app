@@ -10,11 +10,10 @@ import {
     Animated,
     KeyboardAvoidingView
 } from "react-native";
-import {Container, Content, Header, Button, Item, Input, Form, Label, Radio, Toast} from 'native-base'
+import {Container, Content, Header, Button, Item, Input, Form, Label, Radio, Toast, Icon, Textarea} from 'native-base'
 import styles from '../../assets/styles'
 import i18n from '../../locale/i18n'
 import COLORS from '../../src/consts/colors'
-import DateTimePicker from "react-native-modal-datetime-picker";
 import Select2 from 'react-native-select-two';
 import axios from "axios";
 import CONST from "../consts/colors";
@@ -26,13 +25,15 @@ import {DoubleBounce} from "react-native-loader";
 import Modal from "react-native-modal";
 import MapView from "react-native-maps";
 
+// import DateTimePickerModal from "react-native-modal-datetime-picker";
+import DateTimePicker from "react-native-modal-datetime-picker";
+
 
 const height = Dimensions.get('window').height;
 
 class OrderDet_client extends Component {
     constructor(props){
         super(props);
-
         this.state={
             address                 : '',
             LocationName            : '',
@@ -53,6 +54,10 @@ class OrderDet_client extends Component {
             isTimePickerVisible     : false,
             is_ModalVisible         : false,
             mapRegion               : null,
+            isDatePickerVisible     : false,
+            setDatePickerVisibility : false,
+            timeNow                 : '',
+            orderDetails            : '',
             times                   : [
                 {
                     id              : 1,
@@ -78,13 +83,23 @@ class OrderDet_client extends Component {
         }
     }
 
+    showDatePicker = () => {
+        this.setState({ isDatePickerVisible: true });
+    };
 
+    hideDatePicker = () => {
+        this.setState({ isDatePickerVisible: false });
+    };
 
-
-
-
+    handleDatePicked = time => {
+        console.log("A time has been picked: ", time);
+        let formatedTime = time.getHours() + ":" + time.getMinutes()
+        this.setState({ timeNow : formatedTime })
+        this.hideDatePicker();
+    };
 
     async componentWillMount(){
+
         this.setState({ isLoaded: true });
         axios({
             method     : 'post',
@@ -114,6 +129,7 @@ class OrderDet_client extends Component {
             });
         });
     }
+
     static navigationOptions = () => ({
         drawerLabel: () => null,
     });
@@ -134,7 +150,6 @@ class OrderDet_client extends Component {
             this.setState({ kindBuy: payID });
         }
     }
-
 
     renderLoader(){
         if (this.state.isLoaded){
@@ -160,14 +175,15 @@ class OrderDet_client extends Component {
         this.setState({ isTimePickerVisible: false });
     };
 
-    handleTimePicked            = time => {
+    handleTimePicked = time => {
         let formatedTime        = time.getHours() + ":" + time.getMinutes()
         this.setState({
             time : formatedTime , timeStamp : formatedTime
         });
         this.hideTimePicker();
     };
-    async  openModal(){
+
+    async openModal(){
 
 
         this.setState({is_ModalVisible : true});
@@ -221,8 +237,6 @@ class OrderDet_client extends Component {
         }
     };
 
-
-
     saveLocation(){
         if(this.state.LocationName !== '' && this.state.location !== ''){
             this.setState({ isLoaded: true });
@@ -269,12 +283,9 @@ class OrderDet_client extends Component {
         }
     }
 
-
-
-
     confirmOrder() {
 
-      if(this.state.timeStamp.length === 0 || this.state.data.length === 0){
+      if(this.state.timeNow === '' || this.state.data.length === 0){
           Toast.show({ text:i18n.t('complete_data'), duration : 2000 ,
               type :"danger",
               textStyle: {
@@ -291,9 +302,10 @@ class OrderDet_client extends Component {
                   totalPrice        :    this.props.navigation.state.params.totalPrice,
                   couponCode        :    this.props.navigation.state.params.copun,
                   address_id        :    this.state.data[0],
-                  orderHour         :    this.state.timeStamp[0],
+                  orderHour         :    this.state.timeNow,
                   status            :    'public',
                   deliveryPrice     :    this.props.navigation.state.params.DeliveryPriceValue,
+                  orderDetails      :    this.state.orderDetails,
               },
               headers    : {
                   lang         :      ( this.props.lang ) ?  this.props.lang : 'ar',
@@ -330,7 +342,7 @@ class OrderDet_client extends Component {
     }
 
     confirm_Order(){
-        if(this.state.timeStamp.length === 0 || this.state.data.length === 0){
+        if(this.state.timeNow === '' || this.state.data.length === 0){
             Toast.show({ text:i18n.t('complete_data'), duration : 2000 ,
                 type :"danger",
                 textStyle: {
@@ -344,10 +356,10 @@ class OrderDet_client extends Component {
                 data       :  {
                     place_id     :  this.props.navigation.state.params.place_id,
                     kindBuy      :  this.state.kindBuy,
-                    orderDetails :  this.props.navigation.state.params.orderDetails,
+                    orderDetails :  this.state.orderDetails,
                     status       : 'private',
-                    address_id   : this.state.data[0],
-                    orderHour    :    this.state.timeStamp[0],
+                    address_id   :  this.state.data[0],
+                    orderHour    :  this.state.timeStamp[0],
                 },
                 headers    : {
                     lang                 : ( this.props.lang ) ?  this.props.lang : 'ar',
@@ -378,7 +390,6 @@ class OrderDet_client extends Component {
             });
         }
     }
-
 
     render() {
         return (
@@ -441,28 +452,57 @@ class OrderDet_client extends Component {
                                 <View style={{marginVertical : 8}}/>
 
                                     <View style={[styles.container ]}>
-                                        <Select2
-                                            isSelectSingle
-                                            selectedTitlteStyle={{fontFamily :'cairo',textAlign : 'left'}}
-                                            buttonStyle={{fontFamily :'cairo'}}
-                                            cancelButtonText={i18n.t('cancel')}
-                                            searchPlaceHolderText={i18n.t('search')}
-                                            listEmptyTitle={i18n.t('no_result')}
-                                            selectButtonText={i18n.t('confirm')}
-                                            buttonTextStyle={{fontFamily :'cairo'}}
-                                            style       ={{ borderRadius: 5 ,fontFamily :'cairo' , borderColor :COLORS.gray }}
-                                            colorTheme  ={'black'}
-                                            popupTitle  ={i18n.t('choose_time')}
-                                            title       ={i18n.t('Select_time')}
-                                            data        ={this.state.times}
-                                            onSelect    ={(timeStamp) => {
-                                                this.setState({ timeStamp });
-                                            }}
-                                            onRemoveItem={timeStamp => {
-                                                this.setState({ timeStamp });
-                                            }}
+
+                                        {/*<Select2*/}
+                                        {/*    isSelectSingle*/}
+                                        {/*    selectedTitlteStyle={{fontFamily :'cairo',textAlign : 'left'}}*/}
+                                        {/*    buttonStyle={{fontFamily :'cairo'}}*/}
+                                        {/*    cancelButtonText={i18n.t('cancel')}*/}
+                                        {/*    searchPlaceHolderText={i18n.t('search')}*/}
+                                        {/*    listEmptyTitle={i18n.t('no_result')}*/}
+                                        {/*    selectButtonText={i18n.t('confirm')}*/}
+                                        {/*    buttonTextStyle={{fontFamily :'cairo'}}*/}
+                                        {/*    style       ={{ borderRadius: 5 ,fontFamily :'cairo' , borderColor :COLORS.gray }}*/}
+                                        {/*    colorTheme  ={'black'}*/}
+                                        {/*    popupTitle  ={i18n.t('choose_time')}*/}
+                                        {/*    title       ={i18n.t('Select_time')}*/}
+                                        {/*    data        ={this.state.times}*/}
+                                        {/*    onSelect    ={(timeStamp) => {*/}
+                                        {/*        this.setState({ timeStamp });*/}
+                                        {/*    }}*/}
+                                        {/*    onRemoveItem={timeStamp => {*/}
+                                        {/*        this.setState({ timeStamp });*/}
+                                        {/*    }}*/}
+                                        {/*/>*/}
+
+                                    </View>
+
+                                    <View style={[styles.Width_100, styles.height_50, styles.marginVertical_10, styles.Radius_5 , { borderWidth : 1, borderColor : '#DDD' }]}>
+                                        <TouchableOpacity onPress={this.showDatePicker} style={[styles.Width_100, styles.height_50, styles.bg_lightWhite, styles.Radius_40, styles.paddingHorizontal_20, styles.rowGroup]}>
+                                            <Text style={[styles.textRegular, styles.textLeft, styles.textSize_16]}>
+                                                {i18n.translate('Select_time')} : {this.state.timeNow}
+                                            </Text>
+                                            <Icon style={[styles.textSize_22]} type="MaterialIcons" name='access-time' />
+                                        </TouchableOpacity>
+
+                                        <DateTimePicker
+                                            isVisible       = {this.state.isDatePickerVisible}
+                                            onConfirm       = {this.handleDatePicked}
+                                            onCancel        = {this.hideDatePicker}
+                                            mode            = {'time'}
                                         />
                                     </View>
+
+                            <Item style={[styles.loginItem]}>
+                                <Label style={[styles.label ]}>{ i18n.t('orderDet') }</Label>
+                                <Textarea
+                                    value={this.state.orderDetails}
+                                    placeholderTextColor={COLORS.placeholderColor}
+                                    onChangeText={(orderDetails) => this.setState({orderDetails})} autoCapitalize='none'
+                                    style={[styles.input , {height:120 , paddingVertical:10}]}
+                                    placeholder={ i18n.t('orderDet')}
+                                />
+                            </Item>
 
 
 
@@ -544,7 +584,7 @@ class OrderDet_client extends Component {
                         {
                             (this.props.navigation.state.params.status !== 'private')
                                 ?
-                                <TouchableOpacity disabled={(this.state.timeStamp === null || this.state.data === null) ? true : false} onPress={ () => this.confirmOrder()} style={[(this.state.timeStamp === null || this.state.data === null) ? styles.grayBtn : styles.yellowBtn , styles.mt50, styles.mb10]}>
+                                <TouchableOpacity disabled={(this.state.timeNow === '' || this.state.data === null) ? true : false} onPress={ () => this.confirmOrder()} style={[(this.state.timeNow === '' || this.state.data === null) ? styles.grayBtn : styles.yellowBtn , styles.mt50, styles.mb10]}>
                                     <Text style={styles.whiteText}>{ i18n.t('confirm') }</Text>
                                 </TouchableOpacity>
                                 :
@@ -609,6 +649,7 @@ class OrderDet_client extends Component {
                         </Form>
                     </View>
                 </Modal>
+
             </Container>
         );
     }

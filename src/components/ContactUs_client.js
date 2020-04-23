@@ -256,7 +256,8 @@ class ContactUs_client extends Component {
                                                       style={[styles.input , {borderTopRightRadius:25 ,borderTopLeftRadius:25  ,
                                                           borderColor: this.state.msgStatus === 1 ? COLORS.yellow : COLORS.lightGray ,
                                                           backgroundColor: this.state.msgStatus === 1 ? '#fff' : COLORS.lightGray ,
-                                                          height:120 , paddingVertical:10}]} placeholder={ i18n.t('typeMsg') } />
+                                                          height:120 , paddingVertical:10}]} placeholder={ i18n.t('typeMsg') }
+                                            />
                                         </Item>
 
 

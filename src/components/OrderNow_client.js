@@ -49,6 +49,7 @@ class OrderNow_client extends Component {
             packagePercent         : "",
             productTypeDes         : "",
             checkCode              : "",
+            valueAddAmount         : "",
             additionArr            : [],
 
             sectionListData: arr.map((_,i) => ({
@@ -146,6 +147,7 @@ class OrderNow_client extends Component {
                         packagePercent       : response.data.data.prices.packagePercent,
                         percentStatus        : response.data.data.prices.percentStatus,
                         checkCode            : response.data.data.prices.checkCode,
+                        valueAddAmount       : response.data.data.prices.valueAddAmount,
 
                         products             : response.data.data.binsData,
                     });
@@ -529,6 +531,16 @@ class OrderNow_client extends Component {
                             <View style={{width : '100%' ,justifyContent:'space-between', backgroundColor: COLORS.black , alignItems:'center' ,flexDirection:'row', marginVertical  : 3 , borderWidth : .5 , borderColor : COLORS.black}}>
                                 <Text style={{fontFamily : 'cairoBold' , color : '#fff', padding : 10}}>{i18n.t('prices')} </Text>
                                 <Text style={{fontFamily : 'cairoBold' , color : '#fff', padding : 10}}> {this.state.totalPercent} </Text>
+                            </View>
+                            :
+                            <View/>
+                    }
+
+                    {
+                        (this.state.valueAddAmount != '' || this.state.valueAddAmount != 0) ?
+                            <View style={{width : '100%' ,justifyContent:'space-between', backgroundColor: COLORS.black , alignItems:'center' ,flexDirection:'row', marginVertical  : 3 , borderWidth : .5 , borderColor : COLORS.black}}>
+                                <Text style={{fontFamily : 'cairoBold' , color : '#fff', padding : 10}}>{i18n.t('wvt')} </Text>
+                                <Text style={{fontFamily : 'cairoBold' , color : '#fff', padding : 10}}> {this.state.valueAddAmount} ٪</Text>
                             </View>
                             :
                             <View/>

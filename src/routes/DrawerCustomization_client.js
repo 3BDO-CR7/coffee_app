@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {View, Text, Image, Share} from "react-native";
+import {View, Text, Image, Share, TouchableOpacity,Linking} from "react-native";
 import {Container, Content, Toast} from 'native-base';
 import {DrawerItems, NavigationEvents} from 'react-navigation';
 import styles from "../../assets/styles";
@@ -30,7 +30,28 @@ class DrawerCustomization_client extends Component {
         //         lang        : this.props.lang
         //     });
         // }
+
+        axios({
+            method     : 'post',
+            url        :  CONST.url + 'socialMediaAdmin',
+            data       :  {},
+            headers    : {
+                lang             :   ( this.props.lang ) ?  this.props.lang : 'ar',
+            }
+        }).then(response => {
+
+            this.setState({socials : response.data.data})
+
+            console.log('data', response.data.data)
+
+        })
+
     }
+
+    _linkPressed (url){
+        Linking.openURL(url);
+    }
+
     logout(){
         this.props.navigation.navigate('user');
         if(this.props.user)
@@ -92,6 +113,7 @@ class DrawerCustomization_client extends Component {
             }
         } catch (error) {}
     };
+
     onFocus(){
         this.setState({
             items        : this.props.items,
@@ -102,6 +124,7 @@ class DrawerCustomization_client extends Component {
             this.componentWillMount()
         }, 2000)
     }
+
     render() {
         return (
             <Container>
@@ -143,6 +166,27 @@ class DrawerCustomization_client extends Component {
                                              this.filterItems(item)
                                          ) }
                             />
+
+                        <View style={[ styles.overHidden, styles.flexCenter ]}>
+                            <Text style={[ styles.textCenter, styles.textRegular, styles.textSize_14, styles.text_gray ]}>
+                                {i18n.t('followUs')}
+                            </Text>
+                            <View style={[styles.rowGroup , styles.marginVertical_25]}>
+                                <TouchableOpacity  style={styles.directionRow} onPress={()=> this._linkPressed(this.state.socials[0].linkUrl)}>
+                                    <Image source={require('../../assets/images/facebook.png')} style={[styles.social]} resizeMode={'contain'} />
+                                </TouchableOpacity>
+                                <TouchableOpacity  style={styles.directionRow} onPress={()=> this._linkPressed(this.state.socials[3].linkUrl)}>
+                                    <Image source={require('../../assets/images/twitter.png')} style={[styles.social]} resizeMode={'contain'} />
+                                </TouchableOpacity>
+                                <TouchableOpacity  style={styles.directionRow} onPress={()=> this._linkPressed(this.state.socials[2].linkUrl)}>
+                                    <Image source={require('../../assets/images/insta.png')} style={[styles.social]} resizeMode={'contain'} />
+                                </TouchableOpacity>
+                                <TouchableOpacity  style={styles.directionRow} onPress={()=> this._linkPressed('http://api.whatsapp.com/send?phone=' + this.state.socials[1].linkUrl)}>
+                                    <Image source={require('../../assets/images/whats.png')} style={[styles.social]} resizeMode={'contain'} />
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+
                     </Content>
             </Container>
         );
