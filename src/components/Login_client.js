@@ -156,7 +156,7 @@ class Login_client extends Component {
                 {
                     this.props.navigation.navigate('home_client');
                 }else{
-                    this.props.navigation.navigate('home_delegate');
+                    this.props.navigation.navigate('drawerNavigator_delegate');
                 }
 
 

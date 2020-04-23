@@ -23,11 +23,17 @@ class DrawerCustomization_client extends Component {
         }
     }
 
-    componentWillMount() {}
-
+    componentWillMount() {
+        // if(this.props.auth){
+        //     this.props.profile({
+        //         user_id     :this.props.auth.data.user_id,
+        //         lang        : this.props.lang
+        //     });
+        // }
+    }
     logout(){
         this.props.navigation.navigate('user');
-        if(this.state.props.user)
+        if(this.props.user)
         {
             axios({
                 method               : 'post',
@@ -49,10 +55,15 @@ class DrawerCustomization_client extends Component {
                             color: "white",fontFamily : 'cairoBold' ,textAlign:'center'
                         } });
                 }else{
+
+
                     // setTimeout(()=>{
-                        this.props.logout({ token: this.props.auth ? this.props.auth.id  :null});
+                        this.props.logout({ token: this.props.user ? this.props.user.user_id  :null});
                         this.props.tempAuth();
-                    //  Updates.reload();
+                        // setTimeout(()=>{
+                        //     this.props.navigation.navigate('Initial');
+                        // },2500);
+                        //Updates.reload();
                     // },1000)
                 }
 
@@ -82,7 +93,14 @@ class DrawerCustomization_client extends Component {
         } catch (error) {}
     };
     onFocus(){
-        this.setState({items : this.props.items , props        : this.props})
+        this.setState({
+            items        : this.props.items,
+            props        : this.props,
+        })
+
+        setTimeout(()=> {
+            this.componentWillMount()
+        }, 2000)
     }
     render() {
         return (
@@ -130,8 +148,9 @@ class DrawerCustomization_client extends Component {
         );
     }
     filterItems(item){
-        if(this.state.props.user){
-          if(this.state.props.user.userType === 'user'){
+        if(this.props.user){
+            // alert(' -',this.state.props.auth.data.userType)
+          if(this.props.user.userType === 'user'){
               return item.routeName !== 'home_delegate' && item.routeName !== 'orderDet_delegate' && item.routeName !== 'profile_delegate'
                   && item.routeName !== 'myOrders_delegate' && item.routeName !== 'followOrder_delegate'  && item.routeName !== 'Orders'  && item.routeName !== 'location_delegate'&& item.routeName !== 'login'||  item.routeName == 'wallet_client'|| item.routeName === 'logout_client'
           }else{

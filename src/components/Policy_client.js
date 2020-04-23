@@ -93,11 +93,13 @@ class Policy_client extends Component {
                     </View>
                 </Header>
 
-                <Content contentContainerStyle={styles.flexGrow} style={{}}>
+                <Content contentContainerStyle={styles.flexGrow} style={{}} >
                     <ImageBackground source={require('../../assets/images/bg.png')} resizeMode={'cover'} style={styles.imageBackground}>
                         <View style={[styles.homeSection , {marginTop:20}]}>
                             <View style={styles.directionColumnCenter}>
-                                <Image source={require('../../assets/images/logo.png')} style={[styles.wallet ]} resizeMode={'contain'} />
+                                <Image source={require('../../assets/images/logo_dark.png')} style={[styles.wallet ]} resizeMode={'contain'} />
+
+
                                 <View style={{flex: 1, flexDirection:'column'}}>
                                     <View style={[{width: '90%'}]}>
                                         <HTML html={  this.state.Terms_Conditions }                           baseFontStyle={{fontSize              : 10,
@@ -106,6 +108,7 @@ class Policy_client extends Component {
                                     </View>
                                 </View>
                             </View>
+
                         </View>
                     </ImageBackground>
                 </Content>

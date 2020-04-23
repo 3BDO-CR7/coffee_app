@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "coffee_app",
+    "name": "ديم|Deem",
     "slug": "coffee_app",
     "privacy": "public",
     "sdkVersion": "35.0.0",
@@ -9,7 +9,7 @@
       "android",
       "web"
     ],
-    "version": "0.0.2",
+    "version": "0.0.4",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -32,18 +32,18 @@
           "location",
           "fetch"
         ],
-        "NSCameraUsageDescription": "We need this permession to add photos to your ads.",
-        "NSLocationWhenInUseUsageDescription": "app need location to show the nearest ads of you.",
-        "NSLocationAlwaysUsageDescription": "app need location to show the nearest ads of you.",
-        "NSMotionUsageDescription": "app need location to show the nearest ads of you.",
-        "NSPhotoLibraryAddUsageDescription": "We need this permession to add photos to your ads.",
-        "NSPhotoLibraryUsageDescription": "We need this permession to add photos to your ads"
+        "NSCameraUsageDescription": "We need this permession to add photos to your profile.",
+        "NSLocationWhenInUseUsageDescription": "app need location to show the distance between you and Deem cafe",
+        "NSLocationAlwaysUsageDescription": "app need location to show the distance between you and Deem cafe and delegate tracking",
+        "NSMotionUsageDescription": "app need location to show the distance between you and Deem cafe.",
+        "NSPhotoLibraryAddUsageDescription": "We need this permession to add photos to your profile.",
+        "NSPhotoLibraryUsageDescription": "We need this permession to add photos to your profile"
       }
 
     },
     "android": {
       "package": "com.shabaka.coffeeApp",
-      "versionCode": 2,
+      "versionCode": 4,
       "config": {
         "googleMaps": {
           "apiKey": "AIzaSyC5uC_mExFIMSehvCgsjegxcF7mTpKmI4w"

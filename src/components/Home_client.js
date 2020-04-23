@@ -251,7 +251,6 @@ class Home_client extends Component {
 
     logout(){
         this.props.navigation.navigate('user');
-
         axios({
             method     : 'post',
             url        :  CONST.url + 'LogOut',
@@ -260,7 +259,7 @@ class Home_client extends Component {
             },
             headers    : {
                 lang             :    (this.props.lang) ? this.props.lang : 'ar',
-                user_id          :    this.props.user.user_id  ,
+                user_id          :    this.props.auth.data.user_id  ,
             }
         }).then(response => {
 
@@ -272,9 +271,13 @@ class Home_client extends Component {
                         color: "white",fontFamily : 'cairoBold' ,textAlign:'center'
                     } });
             }else{
-                    Updates.reload();
-                    this.props.logout({ token: this.props.auth ? this.props.auth.id : null });
+                    // Updates.reload();
+                    this.props.logout({ token: this.props.auth ? this.props.auth.data.user_id : null });
                     this.props.tempAuth();
+
+                    // setTimeout(()=>{
+                    //     this.props.navigation.navigate('Initial');
+                    // },2500);
             }
 
         }).catch(error => {
@@ -284,7 +287,6 @@ class Home_client extends Component {
         });
 
     }
-
     onFocus(){
         this.componentWillMount()
     }
@@ -407,11 +409,11 @@ class Home_client extends Component {
                             </View>
                         </Animatable.View>
                     </View>
-
                     <ImageBackground source={{ uri : this.state.coverUser }} resizeMode={'cover'} style={{ width : '100%', height : null, position: 'relative' }}>
-
+                        {
+                            (this.state.lat !== null || this.state.long !== null)
+                                ?
                         <View style={{ position: 'relative', backgroundColor:'rgba(0,0,0,0.5)' }}>
-
                             <View style={[ styles.header, { paddingTop: 0, backgroundColor: 'transparent', height : null } ]}>
                                 <View style={styles.directionRow}>
                                     <Button onPress={() => {
@@ -498,18 +500,16 @@ class Home_client extends Component {
                                 </View>
                             </View>
 
-                        </View>
+                        </View>:null}
 
                     </ImageBackground>
 
                     {this. renderLoader()}
-
                     {
                         (this.state.lat === null && this.state.isLoaded === false)
                             ?
-                            <View style={{flex : 1, alignSelf:  'center', marginVertical: 30  , width : '100%'}}>
-                                <Image style={{resizeMode : 'contain' , width : 300 , height : 300  }} source={ require('../../assets/images/no_result.png') }/>
-
+                            <View style={{flex : 1, alignSelf:  'center', marginVertical: 30  , width : '100%' ,justifyContent :'center' , alignItems:'center'}}>
+                                <Image style={{  width : 300 , height : 300  }} source={{uri :'https://cdn4.iconfinder.com/data/icons/maps-and-navigation-10/66/13-512.png'}} />
                                 <TouchableOpacity onPress={ () => this._getLocationAsync()} style={[styles.yellowBtn , styles.mt15, styles.mb10 , {width:'90%' , alignSelf: 'center'}]}>
                                     <Text style={styles.whiteText}>{i18n.t('is_open_gps')}</Text>
                                 </TouchableOpacity>
@@ -521,12 +521,17 @@ class Home_client extends Component {
                     <View style={styles.mainScroll}>
                         <View style={{ alignSelf :  I18nManager.isRTL ? 'flex-start' : 'flex-end', }}>
                             <ScrollView style={{}} horizontal={true} showsHorizontalScrollIndicator={false}>
-
-                                <TouchableOpacity  onPress={ () => this.products(null)} style={styles.scrollView}>
-                                    <Text style={[styles.scrollText,{color:this.state.menu_id === '' || this.state.menu_id == null ? COLORS.black : COLORS.boldGray }]}>{ i18n.t('all') }</Text>
-                                    <View style={[styles.triangle , {borderBottomColor:this.state.menu_id === '' || this.state.menu_id == null ? COLORS.black : 'transparent'}]} />
-                                </TouchableOpacity>
-
+                                {
+                                    (this.state.lat !== null || this.state.long !== null)
+                                        ?
+                                        <TouchableOpacity onPress={() => this.products(null)} style={styles.scrollView}>
+                                            <Text
+                                                style={[styles.scrollText, {color: this.state.menu_id === '' || this.state.menu_id == null ? COLORS.black : COLORS.boldGray}]}>{i18n.t('all')}</Text>
+                                            <View
+                                                style={[styles.triangle, {borderBottomColor: this.state.menu_id === '' || this.state.menu_id == null ? COLORS.black : 'transparent'}]}/>
+                                        </TouchableOpacity>
+                                        : null
+                                }
                                 {
                                     (this.state.categories.map((category,i)=> {
 
@@ -546,7 +551,7 @@ class Home_client extends Component {
                     <View style={[styles.homeSection , {marginTop:20}]}>
 
                         <FlatList
-                            onEndReached = { this.handleLoadMore }
+                            //onEndReached = { this.handleLoadMore }
                             data={this.state.products}
                             renderItem={({item}) => this.renderItems(item)}
                             numColumns={1}
@@ -555,7 +560,7 @@ class Home_client extends Component {
                         />
 
                         {
-                            (this.state.products.length === 0 && this.state.isLoaded === false)
+                            (this.state.products.length === 0 && this.state.isLoaded === false && this.state.lat !== null)
                                 ?
                                 <View style={{flex : 1, alignSelf:  'center', marginVertical: 30 }}>
                                     <Image style={{resizeMode : 'contain' , width : 300 , height : 300  }} source={ require('../../assets/images/no_result.png') }/>

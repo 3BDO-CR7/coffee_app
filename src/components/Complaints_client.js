@@ -193,7 +193,7 @@ class Complaints_client extends Component {
                     <ImageBackground source={require('../../assets/images/bg.png')} resizeMode={'cover'} style={styles.imageBackground}>
                         <View style={[styles.homeSection , {marginTop:20}]}>
                             <View style={styles.directionColumnCenter}>
-                                <Image source={require('../../assets/images/logo.png')} style={[styles.wallet ]} resizeMode={'contain'} />
+                                <Image source={require('../../assets/images/logo_dark.png')} style={[styles.wallet ]} resizeMode={'contain'} />
 
                                     <Form style={{ width: '100%' , marginTop:30}}>
 

@@ -197,7 +197,7 @@ class Home_delegate extends Component {
     logout() {
         this.props.navigation.navigate('user');
 
-        if(this.props.user)
+        if(this.props.auth)
         {
             axios({
                 method: 'post',
@@ -221,8 +221,11 @@ class Home_delegate extends Component {
                     });
                 } else {
                         // Updates.reload();
-                        this.props.logout({token: this.props.auth ? this.props.auth.id : null});
+                        this.props.logout({token: this.props.auth ? this.props.auth.data.user_id : null});
                         this.props.tempAuth();
+                    // setTimeout(()=>{
+                    //     this.props.navigation.navigate('Initial');
+                    // },2500);
                 }
 
             }).catch(error => {
@@ -386,11 +389,11 @@ class Home_delegate extends Component {
                             if(this.state.lat === null || this.state.long === null) {
                                 alert(i18n.t('open_gps'));
                             }else{
-                                this.props.navigation.openDrawer()
+                                ( this.props.navigation ) ? this.props.navigation.openDrawer() :  this.props.navigation.navigate('home_delegate ')
                             }
                         }
                         else{
-                            this.props.navigation.openDrawer()
+                            ( this.props.navigation ) ? this.props.navigation.openDrawer() :  this.props.navigation.navigate('home_delegate')
                         }
                     }
 
