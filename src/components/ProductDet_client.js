@@ -41,8 +41,8 @@ class ProductDet_client extends Component {
             total           : 0,
             count           : 1,
             selectedId      : 0,
-            lat             : null,
-            long            : null,
+            lat             : 24.7136,
+            long            : 46.6753,
             isLoaded        : false,
             checkedBoxCheck : false,
             product         : '',
@@ -87,11 +87,14 @@ class ProductDet_client extends Component {
                 enableHighAccuracy: false,
                 maximumAge        : 15000
             }).then((position) => {
+
                 this.setState({
                     lat           :       position.coords.longitude,
                     long          :       position.coords.latitude
                 });
 
+            }).catch(error => {
+                this.setState({ isLoaded: false });
             });
         }
     };

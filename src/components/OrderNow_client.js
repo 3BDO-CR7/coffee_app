@@ -37,6 +37,8 @@ class OrderNow_client extends Component {
             textErr                : '',
             priceValue             : '',
             priveCode              : '',
+            lat                    : 24.7136,
+            long                   : 46.6753,
             isLoaded               : false,
             isLoaders              : false,
             isLoadeds              : false,
@@ -50,6 +52,8 @@ class OrderNow_client extends Component {
             productTypeDes         : "",
             checkCode              : "",
             valueAddAmount         : "",
+            PrOrderValue           : '',
+            DelveryPriceValue      : '',
             additionArr            : [],
 
             sectionListData: arr.map((_,i) => ({
@@ -80,6 +84,10 @@ class OrderNow_client extends Component {
                 textStyle   : {color: "white", textAlign: 'center'}
             });
             this.setState({ isLoaded: false });
+
+            setTimeout(()=> {
+                this.getResults();
+            },500)
         } else {
 
             return await Location.getCurrentPositionAsync({
@@ -92,13 +100,20 @@ class OrderNow_client extends Component {
                 });
                 setTimeout(()=> {
                     this.getResults();
-                },1000)
+                },500)
+            }).catch(error => {
+                this.setState({ isLoaded: false });
+                setTimeout(()=> {
+                    this.getResults();
+                },500)
             });
         }
     };
 
-    getResults(type)
-    {
+    getResults(type) {
+
+        this.setState({ isLoaded: true });
+
         if(type === 1){
             this.setState({ isLoaded: true });
         }else{
@@ -124,11 +139,16 @@ class OrderNow_client extends Component {
              if(response.data.status === '0')
             {
 
-                Toast.show({ text: response.data.message, duration : 2000 ,
+                Toast.show({
+                    text: response.data.message,
+                    duration : 2000 ,
                     type :"danger",
                     textStyle: {
-                        color: "white",fontFamily : 'cairoBold' ,textAlign:'center'
-                    } });
+                        color: "white",
+                        fontFamily : 'cairoBold' ,
+                        textAlign:'center'
+                    }
+                });
             }else{
 
                 if(response.data.data.check === '0'){
@@ -148,6 +168,9 @@ class OrderNow_client extends Component {
                         percentStatus        : response.data.data.prices.percentStatus,
                         checkCode            : response.data.data.prices.checkCode,
                         valueAddAmount       : response.data.data.prices.valueAddAmount,
+
+                        PrOrderValue         : response.data.data.prices.priceOrderValue,
+                        DelveryPriceValue    : response.data.data.prices.DeliveryPriceValue,
 
                         products             : response.data.data.binsData,
                     });
@@ -205,8 +228,7 @@ class OrderNow_client extends Component {
         });
     }
 
-    editProduct(item,count,type)
-    {
+    editProduct(item,count,type) {
         let num     = parseInt(count)  ;
         if(type   === 'plus')
         {
@@ -355,6 +377,8 @@ class OrderNow_client extends Component {
                 data       :  {
                     code                : this.state.copun,
                     totalPriceValue     : this.state.priceOrderValue,
+                    priceOrderValue     : this.state.PrOrderValue,
+                    DeliveryPriceValue  : this.state.DelveryPriceValue,
                 },
                 headers          : {
                     lang         :      ( this.props.lang ) ?  this.props.lang : 'ar',
@@ -428,10 +452,10 @@ class OrderNow_client extends Component {
                                 <View style={[styles.directionRowSpace ]}>
                                     <Text style={[styles.boldGrayText ]}>{ this.state.data.familyName}</Text>
                                 </View>
-                                <View style={[styles.locationView]}>
-                                    <Image source={require('../../assets/images/maps.png')} style={[styles.locationImg]} resizeMode={'contain'} />
-                                    <Text style={[styles.grayText , {fontSize:12, writingDirection: I18nManager.isRTL ? 'rtl' : 'ltr'} ]}>{ this.state.data.distance}</Text>
-                                </View>
+                                {/*<View style={[styles.locationView]}>*/}
+                                {/*    <Image source={require('../../assets/images/maps.png')} style={[styles.locationImg]} resizeMode={'contain'} />*/}
+                                {/*    <Text style={[styles.grayText , {fontSize:12, writingDirection: I18nManager.isRTL ? 'rtl' : 'ltr'} ]}>{ this.state.data.distance}</Text>*/}
+                                {/*</View>*/}
                             </View>
                         </View>
                         <View style={styles.backTitle}>

@@ -23,13 +23,11 @@ class Cart_client extends Component {
 
         this.state={
             search      : '',
-            lat         : '',
             isLoaded    : true,
-            long        : '',
+            lat         : null,
+            long        : null,
             restaurants : [],
         };
-
-
     }
 
     static navigationOptions = () => ({
@@ -42,10 +40,14 @@ class Cart_client extends Component {
         let {status} = await Permissions.askAsync(Permissions.LOCATION);
         if (status !== 'granted') {
             Toast.show({
-                text: 'Permission to access location was denied',
+                text: i18n.t('clickMap'),
                 duration: 4000,
                 type: 'danger',
-                textStyle: {color: "white", textAlign: 'center'}
+                textStyle: {
+                    color: "white",
+                    fontFamily : 'cairoBold' ,
+                    textAlign:'center'
+                }
             });
             this.setState({ isLoaded: false });
         } else {
@@ -61,12 +63,23 @@ class Cart_client extends Component {
                 setTimeout(()=> {
                     this.getResults();
                 },1000)
+            }).catch(error => {
+                Toast.show({
+                    text: i18n.t('clickMap'),
+                    duration: 4000,
+                    type: 'danger',
+                    textStyle: {
+                        color: "white",
+                        fontFamily : 'cairoBold' ,
+                        textAlign:'center'
+                    }
+                });
+                this.setState({ isLoaded: false });
             });
         }
     };
 
-
-   async componentWillMount(){
+    async componentWillMount(){
        this._getLocationAsync();
     }
 
@@ -77,12 +90,12 @@ class Cart_client extends Component {
         this.componentWillMount();
     }
 
-
     componentWillUnmount(){
        this.setState({
            restaurants : []
        });
     }
+
     getResults(){
         this.setState({isLoaded: true});
         axios({
@@ -113,7 +126,7 @@ class Cart_client extends Component {
 
     _keyExtractor = (item, index) => item.id;
 
-     renderItems = (item , key) => {
+    renderItems = (item , key) => {
         return(
             <TouchableOpacity  key={key} onPress={() => this.props.navigation.navigate('orderNow_client',{
                 place_id : item.place_id
@@ -123,10 +136,10 @@ class Cart_client extends Component {
                     <View style={[styles.directionRowSpace ]}>
                         <Text style={[styles.boldGrayText ]}>{item.familyName}</Text>
                     </View>
-                    <View style={[styles.locationView]}>
-                        <Image source={require('../../assets/images/maps.png')} style={[styles.locationImg]} resizeMode={'contain'} />
-                        <Text style={[styles.grayText , {writingDirection: I18nManager.isRTL ? 'rtl' : 'ltr',fontSize:12} ]}>{item.distance}</Text>
-                    </View>
+                    {/*<View style={[styles.locationView]}>*/}
+                    {/*    <Image source={require('../../assets/images/maps.png')} style={[styles.locationImg]} resizeMode={'contain'} />*/}
+                    {/*    <Text style={[styles.grayText , {writingDirection: I18nManager.isRTL ? 'rtl' : 'ltr',fontSize:12} ]}>{item.distance}</Text>*/}
+                    {/*</View>*/}
                 </View>
             </TouchableOpacity>
         );
@@ -165,6 +178,20 @@ class Cart_client extends Component {
                     <NavigationEvents onWillFocus={() => this.onFocus()} />
 
                     { this.renderLoader() }
+
+                    {
+                        (this.state.lat === null && this.state.isLoaded === false)
+                            ?
+                            <View style={{flex : 1, alignSelf:  'center', marginVertical: 30  , width : '100%' ,justifyContent :'center' , alignItems:'center'}}>
+                                <Image style={{  width : 300 , height : 300  }} source={{uri :'https://cdn4.iconfinder.com/data/icons/maps-and-navigation-10/66/13-512.png'}} />
+                                <TouchableOpacity onPress={ () => this._getLocationAsync()} style={[styles.yellowBtn , styles.mt15, styles.mb10 , {width:'90%' , alignSelf: 'center'}]}>
+                                    <Text style={styles.whiteText}>{i18n.t('is_open_gps')}</Text>
+                                </TouchableOpacity>
+                            </View>
+                            :
+                            <View/>
+                    }
+
                     <View style={[styles.homeSection , {marginTop:20}]}>
                         <FlatList
                             data={this.state.restaurants}
@@ -174,7 +201,7 @@ class Cart_client extends Component {
                         />
 
                         {
-                            (this.state.restaurants.length === 0   && this.state.isLoaded === false)
+                            (this.state.restaurants.length === 0 && this.state.isLoaded === false)
                                 ?
                                 <View style={{flex : 1, alignSelf:  'center', marginVertical: 30 }}>
                                     <Image style={{resizeMode : 'contain' , width : 300 , height : 300  }} source={ require('../../assets/images/no_result.png') }/>

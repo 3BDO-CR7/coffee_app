@@ -30,24 +30,67 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/OrderNow_client.js">
+        <entry file="file://$PROJECT_DIR$/src/components/Home_client.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="536" column="21" lean-forward="true" selection-start-line="536" selection-start-column="21" selection-end-line="536" selection-end-column="21" />
+            <state relative-caret-position="559">
+              <caret line="163" column="14" lean-forward="true" selection-start-line="163" selection-start-column="14" selection-end-line="166" selection-end-column="15" />
               <folding>
-                <element signature="n#!!block;n#onFocus#0;n#OrderNow_client#0" />
-                <element signature="n#!!block;n#deleteOrder#0;n#OrderNow_client#0" />
-                <element signature="n#!!block;n#editProduct#0;n#OrderNow_client#0" />
+                <element signature="e#0#41#0" expanded="true" />
+                <element signature="e#2185#2789#0" />
+                <element signature="n#!!block;n#handleNotification#0;n#Home_client#0" />
+                <element signature="n#!!block;n#getOrderHome#0;n#Home_client#0" />
+                <element signature="n#!!block;n#check#0;n#Home_client#0" />
+                <element signature="n#!!block;n#componentWillMount#0;n#Home_client#0" />
+                <element signature="n#!!block;n#logout#0;n#Home_client#0" />
+                <element signature="n#!!block;n#getProducts#0;n#Home_client#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/locale/en.js">
+        <entry file="file://$PROJECT_DIR$/src/components/ProductDet_client.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="565">
-              <caret line="283" column="8" selection-start-line="283" selection-start-column="8" selection-end-line="283" selection-end-column="8" />
+            <state relative-caret-position="-875">
+              <caret line="42" column="32" lean-forward="true" selection-start-line="42" selection-start-column="32" selection-end-line="44" selection-end-column="38" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+                <element signature="n#!!block;n#onFocus#0;n#ProductDet_client#0" />
+                <element signature="n#!!block;n#componentWillMount#0;n#ProductDet_client#0" />
+                <element signature="n#!!block;n#checkAdd#0;n#ProductDet_client#0" />
+                <element signature="n#!!block;n#setAnimate#0;n#ProductDet_client#0" />
+                <element signature="n#!!block;n#headerScrollingAnimation#0;n#ProductDet_client#0" />
+                <element signature="n#!!block;n#increment#0;n#ProductDet_client#0" />
+                <element signature="n#!!block;n#decrement#0;n#ProductDet_client#0" />
+                <element signature="n#!!block;n#renderLoader#0;n#ProductDet_client#0" />
+                <element signature="e#7791#8328#0" />
+                <element signature="n#!!block;n#addToCart#0;n#ProductDet_client#0" />
+                <element signature="n#!!block;n#orderNow#0;n#ProductDet_client#0" />
+                <element signature="n#!!block;n#render#0;n#ProductDet_client#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/OrderNow_client.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="245">
+              <caret line="380" column="40" lean-forward="true" selection-start-line="380" selection-start-column="40" selection-end-line="380" selection-end-column="40" />
+              <folding>
+                <element signature="n#!!block;n#onFocus#0;n#OrderNow_client#0" />
+                <element signature="n#!!block;n#componentWillMount#0;n#OrderNow_client#0" />
+                <element signature="e#2689#3665#0" />
+                <element signature="n#!!block;n#getResults#0;n#OrderNow_client#0" />
+                <element signature="n#!!block;n#deleteOrder#0;n#OrderNow_client#0" />
+                <element signature="n#!!block;n#editProduct#0;n#OrderNow_client#0" />
+                <element signature="n#!!block;n#renderLoader#0;n#OrderNow_client#0" />
+                <element signature="n#!!block;n#renderLoaders#0;n#OrderNow_client#0" />
+                <element signature="e#9768#9808#0" />
+                <element signature="n#!!block;n#toggleModalInfo#0;n#OrderNow_client#0" />
+                <element signature="n#!!block;n#renderSubmit#0;n#OrderNow_client#0" />
+                <element signature="n#!!block;n#onSend#0;n#OrderNow_client#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -55,21 +98,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/locale/ar.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="565">
-              <caret line="285" column="8" selection-start-line="285" selection-start-column="5" selection-end-line="285" selection-end-column="8" />
+            <state relative-caret-position="523">
+              <caret line="285" column="35" lean-forward="true" selection-start-line="285" selection-start-column="35" selection-end-line="286" selection-end-column="60" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/OrderDet_client.js">
+        <entry file="file://$PROJECT_DIR$/locale/en.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1058">
-              <caret line="498" column="67" selection-start-line="498" selection-start-column="67" selection-end-line="498" selection-end-column="67" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-                <element signature="e#23928#27767#0" />
-              </folding>
+            <state relative-caret-position="544">
+              <caret line="283" column="18" lean-forward="true" selection-start-line="283" selection-start-column="18" selection-end-line="284" selection-end-column="63" />
             </state>
           </provider>
         </entry>
@@ -78,13 +117,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>drawer</find>
-      <find>user</find>
-      <find>orderStatus2</find>
-      <find>الغا</find>
-      <find>cansel</find>
-      <find>cans</find>
-      <find>MyOrders_client</find>
       <find>detailsOrder</find>
       <find>المل</find>
       <find>cancelorder</find>
@@ -108,6 +140,13 @@
       <find>اطلب</find>
       <find>orderLater</find>
       <find>تفا</find>
+      <find>lat</find>
+      <find>الموقع</find>
+      <find>_getLocationAsync</find>
+      <find>openDrawer</find>
+      <find>long</find>
+      <find>priveCode</find>
+      <find>totalpricepre</find>
     </findStrings>
     <replaceStrings>
       <replace>black</replace>
@@ -120,7 +159,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="&lt;d606392f-2265-4eb6-bdba-e9d660a8de3a&gt;/app/Http/Controllers/SiteController.php" />
         <option value="&lt;d606392f-2265-4eb6-bdba-e9d660a8de3a&gt;/routes/web.php" />
         <option value="&lt;d606392f-2265-4eb6-bdba-e9d660a8de3a&gt;/resources/views/website/add-blog.blade.php" />
         <option value="&lt;d606392f-2265-4eb6-bdba-e9d660a8de3a&gt;/resources/views/website/add-blogs.blade.php" />
@@ -146,12 +184,9 @@
         <option value="$PROJECT_DIR$/src/components/RestDet_client.js" />
         <option value="$PROJECT_DIR$/assets/styles/index.js" />
         <option value="$PROJECT_DIR$/src/components/OrderDet_delegate.js" />
-        <option value="$PROJECT_DIR$/src/components/Home_client.js" />
-        <option value="$PROJECT_DIR$/src/components/ProductDet_client.js" />
         <option value="$PROJECT_DIR$/src/components/OrderDetails.js" />
         <option value="$PROJECT_DIR$/src/components/Recharge.js" />
         <option value="$PROJECT_DIR$/src/components/Login_delegate.js" />
-        <option value="$PROJECT_DIR$/src/components/Home_delegate.js" />
         <option value="$PROJECT_DIR$/src/actions/LangAction.js" />
         <option value="$PROJECT_DIR$/App.js" />
         <option value="$PROJECT_DIR$/src/components/Login_client.js" />
@@ -162,21 +197,25 @@
         <option value="$PROJECT_DIR$/src/components/MyOrders_client.js" />
         <option value="$PROJECT_DIR$/src/components/AddRate_client.js" />
         <option value="$PROJECT_DIR$/src/routes/index.js" />
-        <option value="$PROJECT_DIR$/ReactotronConfig.js" />
         <option value="$PROJECT_DIR$/app.json" />
         <option value="$PROJECT_DIR$/src/routes/DrawerCustomization_client.js" />
         <option value="$PROJECT_DIR$/src/routes/DrawerCustomization_delegate.js" />
         <option value="$PROJECT_DIR$/src/components/ContactUs_client.js" />
         <option value="$PROJECT_DIR$/src/components/OrderDet_client.js" />
-        <option value="$PROJECT_DIR$/locale/ar.js" />
+        <option value="$PROJECT_DIR$/src/components/Home_delegate.js" />
+        <option value="$PROJECT_DIR$/ReactotronConfig.js" />
         <option value="$PROJECT_DIR$/locale/en.js" />
+        <option value="$PROJECT_DIR$/locale/ar.js" />
+        <option value="$PROJECT_DIR$/src/components/Home_client.js" />
+        <option value="$PROJECT_DIR$/src/components/Cart_client.js" />
+        <option value="$PROJECT_DIR$/src/components/ProductDet_client.js" />
         <option value="$PROJECT_DIR$/src/components/OrderNow_client.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
     <option name="y" value="23" />
-    <option name="width" value="1087" />
+    <option name="width" value="1092" />
     <option name="height" value="809" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -185,7 +224,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -208,6 +246,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -282,17 +321,18 @@
       <workItem from="1585470538979" duration="49392000" />
       <workItem from="1586163382717" duration="10990000" />
       <workItem from="1587631407387" duration="10602000" />
+      <workItem from="1587893830218" duration="9055000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="366809000" />
+    <option name="totallyTimeSpent" value="375864000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22492836" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22851002" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -378,26 +418,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ProductDet_client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="244" column="33" selection-start-line="244" selection-start-column="21" selection-end-line="244" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-            <element signature="e#1734#2614#0" />
-            <element signature="n#!!block;n#onFocus#0;n#ProductDet_client#0" />
-            <element signature="n#!!block;n#componentWillMount#0;n#ProductDet_client#0" />
-            <element signature="n#!!block;n#checkAdd#0;n#ProductDet_client#0" />
-            <element signature="n#!!block;n#setAnimate#0;n#ProductDet_client#0" />
-            <element signature="n#!!block;n#headerScrollingAnimation#0;n#ProductDet_client#0" />
-            <element signature="n#!!block;n#increment#0;n#ProductDet_client#0" />
-            <element signature="n#!!block;n#decrement#0;n#ProductDet_client#0" />
-            <element signature="e#8468#10885#0" />
-            <element signature="e#11257#11311#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/OrderDet_delegate.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -462,31 +482,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Home_delegate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="380" column="42" lean-forward="true" selection-start-line="380" selection-start-column="42" selection-end-line="380" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-            <element signature="n#!!block;n#componentWillUnmount#0;n#Home_delegate#0" />
-            <element signature="n#!!block;n#joinRoom#0;n#Home_delegate#0" />
-            <element signature="n#!!block;n#getLocation#0;n#Home_delegate#0" />
-            <element signature="n#!!block;n#componentDidMount#0;n#Home_delegate#0" />
-            <element signature="e#4064#4668#0" />
-            <element signature="e#4708#4888#0" />
-            <element signature="n#!!block;n#check#0;n#Home_delegate#0" />
-            <element signature="n#!!block;n#logout#0;n#Home_delegate#0" />
-            <element signature="e#7510#10189#0" />
-            <element signature="n#!!block;n#componentWillMount#0;n#Home_delegate#0" />
-            <element signature="n#!!block;n#handleNotification#0;n#Home_delegate#0" />
-            <element signature="n#!!block;n#onFocus#0;n#Home_delegate#0" />
-            <element signature="n#!!block;n#renderLoader#0;n#Home_delegate#0" />
-            <element signature="e#11705#13072#0" />
-            <element signature="n#!!block;n#_onRefresh#0;n#Home_delegate#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/reducers/LangReducer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -523,16 +518,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/User.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="349">
@@ -544,16 +529,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="27" column="64" lean-forward="true" selection-start-line="27" selection-start-column="64" selection-end-line="27" selection-end-column="64" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Login_client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="226" lean-forward="true" selection-start-line="226" selection-end-line="226" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
@@ -715,27 +690,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Home_client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="456" column="84" lean-forward="true" selection-start-line="456" selection-start-column="84" selection-end-line="456" selection-end-column="84" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-            <element signature="n#!!block;n#handleNotification#0;n#Home_client#0" />
-            <element signature="n#!!block;n#check#0;n#Home_client#0" />
-            <element signature="n#!!block;n#logout#0;n#Home_client#0" />
-            <element signature="n#!!block;n#getProducts#0;n#Home_client#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ReactotronConfig.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="42" selection-start-line="2" selection-start-column="42" selection-end-line="2" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/App.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1008">
@@ -799,23 +753,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Cart_client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="117" column="98" selection-start-line="117" selection-start-column="98" selection-end-line="117" selection-end-column="98" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="97" column="29" selection-start-line="97" selection-start-column="29" selection-end-line="97" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/ContactUs_client.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="329">
@@ -826,39 +763,160 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/OrderDet_client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9933">
+          <caret line="498" column="67" selection-start-line="498" selection-start-column="67" selection-end-line="498" selection-end-column="67" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Home_delegate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-286">
+          <caret line="238" column="36" lean-forward="true" selection-start-line="238" selection-start-column="36" selection-end-line="238" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="n#!!block;n#componentWillUnmount#0;n#Home_delegate#0" />
+            <element signature="n#!!block;n#joinRoom#0;n#Home_delegate#0" />
+            <element signature="n#!!block;n#getLocation#0;n#Home_delegate#0" />
+            <element signature="e#4152#4756#0" />
+            <element signature="e#4797#4977#0" />
+            <element signature="n#!!block;n#check#0;n#Home_delegate#0" />
+            <element signature="n#!!block;n#logout#0;n#Home_delegate#0" />
+            <element signature="n#!!block;n#componentWillMount#0;n#Home_delegate#0" />
+            <element signature="n#!!block;n#handleNotification#0;n#Home_delegate#0" />
+            <element signature="n#!!block;n#onFocus#0;n#Home_delegate#0" />
+            <element signature="n#!!block;n#renderLoader#0;n#Home_delegate#0" />
+            <element signature="e#11933#13270#0" />
+            <element signature="n#!!block;n#_onRefresh#0;n#Home_delegate#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ReactotronConfig.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="42" selection-start-line="2" selection-start-column="42" selection-end-line="2" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Login_client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1487">
+          <caret line="216" column="34" selection-start-line="216" selection-start-column="34" selection-end-line="216" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Cart_client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="130" column="35" selection-start-line="130" selection-start-column="35" selection-end-line="130" selection-end-column="35" />
+          <folding>
+            <element signature="n#!!block;n#componentWillMount#0;n#Cart_client#0" />
+            <element signature="n#!!block;n#onFocus#0;n#Cart_client#0" />
+            <element signature="n#!!block;n#componentWillUnmount#0;n#Cart_client#0" />
+            <element signature="n#!!block;n#getResults#0;n#Cart_client#0" />
+            <element signature="n#!!block;n#renderLoader#0;n#Cart_client#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="79" column="26" selection-start-line="79" selection-start-column="26" selection-end-line="79" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/locale/ar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="565">
-          <caret line="285" column="8" selection-start-line="285" selection-start-column="5" selection-end-line="285" selection-end-column="8" />
+        <state relative-caret-position="523">
+          <caret line="285" column="35" lean-forward="true" selection-start-line="285" selection-start-column="35" selection-end-line="286" selection-end-column="60" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/locale/en.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="565">
-          <caret line="283" column="8" selection-start-line="283" selection-start-column="8" selection-end-line="283" selection-end-column="8" />
+        <state relative-caret-position="544">
+          <caret line="283" column="18" lean-forward="true" selection-start-line="283" selection-start-column="18" selection-end-line="284" selection-end-column="63" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/OrderDet_client.js">
+    <entry file="file://$PROJECT_DIR$/src/components/ProductDet_client.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1058">
-          <caret line="498" column="67" selection-start-line="498" selection-start-column="67" selection-end-line="498" selection-end-column="67" />
+        <state relative-caret-position="-875">
+          <caret line="42" column="32" lean-forward="true" selection-start-line="42" selection-start-column="32" selection-end-line="44" selection-end-column="38" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
-            <element signature="e#23928#27767#0" />
+            <element signature="n#!!block;n#onFocus#0;n#ProductDet_client#0" />
+            <element signature="n#!!block;n#componentWillMount#0;n#ProductDet_client#0" />
+            <element signature="n#!!block;n#checkAdd#0;n#ProductDet_client#0" />
+            <element signature="n#!!block;n#setAnimate#0;n#ProductDet_client#0" />
+            <element signature="n#!!block;n#headerScrollingAnimation#0;n#ProductDet_client#0" />
+            <element signature="n#!!block;n#increment#0;n#ProductDet_client#0" />
+            <element signature="n#!!block;n#decrement#0;n#ProductDet_client#0" />
+            <element signature="n#!!block;n#renderLoader#0;n#ProductDet_client#0" />
+            <element signature="e#7791#8328#0" />
+            <element signature="n#!!block;n#addToCart#0;n#ProductDet_client#0" />
+            <element signature="n#!!block;n#orderNow#0;n#ProductDet_client#0" />
+            <element signature="n#!!block;n#render#0;n#ProductDet_client#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/OrderNow_client.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="536" column="21" lean-forward="true" selection-start-line="536" selection-start-column="21" selection-end-line="536" selection-end-column="21" />
+        <state relative-caret-position="245">
+          <caret line="380" column="40" lean-forward="true" selection-start-line="380" selection-start-column="40" selection-end-line="380" selection-end-column="40" />
           <folding>
             <element signature="n#!!block;n#onFocus#0;n#OrderNow_client#0" />
+            <element signature="n#!!block;n#componentWillMount#0;n#OrderNow_client#0" />
+            <element signature="e#2689#3665#0" />
+            <element signature="n#!!block;n#getResults#0;n#OrderNow_client#0" />
             <element signature="n#!!block;n#deleteOrder#0;n#OrderNow_client#0" />
             <element signature="n#!!block;n#editProduct#0;n#OrderNow_client#0" />
+            <element signature="n#!!block;n#renderLoader#0;n#OrderNow_client#0" />
+            <element signature="n#!!block;n#renderLoaders#0;n#OrderNow_client#0" />
+            <element signature="e#9768#9808#0" />
+            <element signature="n#!!block;n#toggleModalInfo#0;n#OrderNow_client#0" />
+            <element signature="n#!!block;n#renderSubmit#0;n#OrderNow_client#0" />
+            <element signature="n#!!block;n#onSend#0;n#OrderNow_client#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Home_client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="559">
+          <caret line="163" column="14" lean-forward="true" selection-start-line="163" selection-start-column="14" selection-end-line="166" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#2185#2789#0" />
+            <element signature="n#!!block;n#handleNotification#0;n#Home_client#0" />
+            <element signature="n#!!block;n#getOrderHome#0;n#Home_client#0" />
+            <element signature="n#!!block;n#check#0;n#Home_client#0" />
+            <element signature="n#!!block;n#componentWillMount#0;n#Home_client#0" />
+            <element signature="n#!!block;n#logout#0;n#Home_client#0" />
+            <element signature="n#!!block;n#getProducts#0;n#Home_client#0" />
           </folding>
         </state>
       </provider>

@@ -105,8 +105,6 @@ class Home_delegate extends Component {
 
         this.getLocation();
         this.backHandler                    = BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
-
-
         //background
         const locations                     =   await Location.startLocationUpdatesAsync('update_delegate_location', {
             enableHighAccuracy              : true,

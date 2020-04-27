@@ -44,12 +44,11 @@ class Home_client extends Component {
                 categories      : [],
                 products        : [],
                 cart_count      : 0,
-                lat             : null,
-                long            : null,
+                lat             : 24.7136,
+                long            : 46.6753,
                 is_notification : 0,
                 id              : 0,
                 show            : true,
-
                 coverUser       : '',
                 imgUser         : '',
                 nameUser        : '',
@@ -126,11 +125,10 @@ class Home_client extends Component {
         }
     }
 
-        static navigationOptions = () => ({
+    static navigationOptions = () => ({
         drawerLabel: i18n.t('home') ,
         drawerIcon: (<Image source={require('../../assets/images/noun_home.png')} style={styles.drawerImg} resizeMode={'contain'} /> )
-
-      });
+    });
 
     _getLocationAsync = async () => {
 
@@ -143,70 +141,88 @@ class Home_client extends Component {
                 text        : 'Permission to access location was denied',
                 duration    : 4000,
                 type        : 'danger',
-                textStyle   : {color: "white", textAlign: 'center'}
+                textStyle   : {
+                    color: "white",
+                    textAlign: 'center'
+                }
             });
             this.setState({ isLoaded: false });
+            this.getOrderHome();
         } else {
 
             return await Location.getCurrentPositionAsync({
                 enableHighAccuracy: false,
                 maximumAge        : 15000
             }).then((position) => {
+
                 this.setState({
                     lat           :       position.coords.longitude,
                     long          :       position.coords.latitude
                 });
+                this.getOrderHome();
 
-                this.setState({ isLoaded: true });
-
-                axios({
-                    method     : 'post',
-                    url        :  CONST.url + 'homeScreen',
-                    data       :  {
-                        lat           :       position.coords.longitude,
-                        long          :       position.coords.latitude
-                    },
-                    headers    : {
-                        lang             :   ( this.props.lang ) ?  this.props.lang : 'ar',
-                    }
-                }).then(response => {
-
-                    if(response.data.status === '0')
-                    {
-                        Toast.show({ text: response.data.message, duration : 2000 ,
-                            type :"danger",
-                            textStyle: {
-                                color: "white",fontFamily : 'cairoBold' ,textAlign:'center'
-                            } });
-                    }else{
-
-                        this.setState({
-                            sliders         : response.data.data.dataAdvertise,
-                            coverUser       : response.data.data.familyData.imageCover,
-                            imgUser         : response.data.data.familyData.imageProfile,
-                            nameUser        : response.data.data.familyData.placeName,
-                            cityUser        : response.data.data.familyData.address,
-                            rateUser        : response.data.data.familyData.rating,
-                            place_id        : response.data.data.familyData.place_id,
-                            categories      : response.data.data.familyData.menus,
-                        });
-
-                         this.check();
-
-                        // setTimeout(() => {
-                            this.getProducts();
-                        // }, 5000);
-
-                    }
-
-                }).catch(error => {
-
-                }).then(()=>{
-                    this.setState({ isLoaded: false });
-                });
+            }).catch(error => {
+                this.setState({ isLoaded: false });
+                this.getOrderHome();
             });
         }
+
     };
+
+    getOrderHome(){
+
+        this.setState({ isLoaded: true });
+
+        axios({
+            method     : 'post',
+            url        :  CONST.url + 'homeScreen',
+            data       :  {
+                lat           :       this.state.lat,
+                long          :       this.state.long
+            },
+            headers    : {
+                lang             :   ( this.props.lang ) ?  this.props.lang : 'ar',
+            }
+        }).then(response => {
+
+            if(response.data.status === '0') {
+                Toast.show({
+                    text: response.data.message,
+                    duration : 2000 ,
+                    type :"danger",
+                    textStyle: {
+                        color: "white",
+                        fontFamily : 'cairoBold' ,
+                        textAlign:'center'
+                    }
+                });
+            }else{
+
+                this.setState({
+                    sliders         : response.data.data.dataAdvertise,
+                    coverUser       : response.data.data.familyData.imageCover,
+                    imgUser         : response.data.data.familyData.imageProfile,
+                    nameUser        : response.data.data.familyData.placeName,
+                    cityUser        : response.data.data.familyData.address,
+                    rateUser        : response.data.data.familyData.rating,
+                    place_id        : response.data.data.familyData.place_id,
+                    categories      : response.data.data.familyData.menus,
+                });
+
+                this.check();
+
+                // setTimeout(() => {
+                this.getProducts();
+                // }, 5000);
+
+            }
+
+        }).catch(error => {
+
+        }).then(()=>{
+            this.setState({ isLoaded: false });
+        });
+    }
 
     check(){
         if(this.props.auth !== null &&  this.state.lat &&  this.state.long){
@@ -287,6 +303,7 @@ class Home_client extends Component {
         });
 
     }
+
     onFocus(){
         this.componentWillMount()
     }
@@ -505,6 +522,7 @@ class Home_client extends Component {
                     </ImageBackground>
 
                     {this. renderLoader()}
+
                     {
                         (this.state.lat === null && this.state.isLoaded === false)
                             ?
