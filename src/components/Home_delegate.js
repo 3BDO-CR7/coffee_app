@@ -9,7 +9,7 @@ import {
     BackHandler,
     Alert,
     FlatList,
-    AsyncStorage
+    AsyncStorage, Vibration
 } from "react-native";
 import {Container, Content, Header, Button, Toast} from 'native-base'
 import styles from '../../assets/styles'
@@ -310,6 +310,16 @@ class Home_delegate extends Component {
     }
 
     handleNotification(notification){
+
+        if (notification.remote) {
+            Vibration.vibrate();
+            const notificationId = Notifications.presentLocalNotificationAsync({
+                title: notification.data.title  ? notification.data.title : i18n.t('newNotification'),
+                body: notification.data.body ? notification.data.body : i18n.t('newNotification'),
+                ios: { _displayInForeground: true }
+            });
+        }
+
             if (notification && notification.origin !== 'received') {
                 if (notification.data.key === 'nearOrder') {
                     this.props.navigation.navigate('home_delegate');

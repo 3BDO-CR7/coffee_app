@@ -167,22 +167,6 @@ class OrderDet_client extends Component {
         }
     }
 
-    showTimePicker = () => {
-        this.setState({ isTimePickerVisible: true });
-    };
-
-    hideTimePicker = () => {
-        this.setState({ isTimePickerVisible: false });
-    };
-
-    handleTimePicked = time => {
-        let formatedTime        = time.getHours() + ":" + time.getMinutes()
-        this.setState({
-            time : formatedTime , timeStamp : formatedTime
-        });
-        this.hideTimePicker();
-    };
-
     async openModal(){
 
 
@@ -196,9 +180,7 @@ class OrderDet_client extends Component {
             const userLocation                         = { latitude, longitude };
             let getCity                                = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=';
             getCity                                    += userLocation.latitude + ',' + userLocation.longitude;
-            getCity                                    += this.props.user.googleKey;
-
-
+            getCity                                    += '&key='+ this.props.user.googleKey +'&language=ar&sensor=true';
             try {
                 const { data } = await axios.get(getCity);
                 this.setState({
@@ -220,8 +202,7 @@ class OrderDet_client extends Component {
             this.setState({ mapRegion });
             let getCity = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=';
             getCity += mapRegion.latitude + ',' + mapRegion.longitude;
-            getCity += this.props.user.googleKey;
-
+            getCity                                    += '&key='+ this.props.user.googleKey +'&language=ar&sensor=true';
             console.log('locations data', getCity);
 
             try {

@@ -44,14 +44,12 @@ class Locations extends Component {
         drawerIcon: (<Image source={require('../../assets/images/noun_Info.png')} style={styles.drawerImg} resizeMode={'contain'} /> )
     });
 
-
-  async  componentWillMount()
-    {
+    async componentWillMount() {
             this.getOrders();
+            console.log('googleKey', this.props.user.googleKey )
     }
 
-    getOrders()
-    {
+    getOrders() {
         this.setState({ isLoaded: true });
         axios({
             method     : 'post',
@@ -93,7 +91,7 @@ class Locations extends Component {
         }
     }
 
-  async  openModal(type){
+    async openModal(type){
 
       if(type){
           this.setState({is_ModalVisible : true});
@@ -116,7 +114,7 @@ class Locations extends Component {
 
         let getCity   = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=';
         getCity      += this.state.mapRegion.latitude + ',' + this.state.mapRegion.longitude;
-        getCity      += this.props.user.googleKey;
+        getCity                                    += '&key='+ this.props.user.googleKey +'&language=ar&sensor=true';
 
         try {
             const { data } = await axios.get(getCity);
@@ -125,7 +123,6 @@ class Locations extends Component {
             console.log(e);
         }
     }
-
 
     saveLocation(){
       if(this.state.LocationName !== '' && this.state.location !== ''){
@@ -168,7 +165,6 @@ class Locations extends Component {
           this.setState({textErr :i18n.t('some_fields_required')});
       }
     }
-
 
     openUpdateLocation(item){
 
@@ -226,12 +222,12 @@ class Locations extends Component {
     }
 
     _handleMapRegionChange  = async (mapRegion) =>  {
-    {
+        {
 
         this.setState({ mapRegion });
         let getCity = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=';
         getCity += mapRegion.latitude + ',' + mapRegion.longitude;
-        getCity += this.props.user.googleKey;
+        getCity                                    += '&key='+ this.props.user.googleKey +'&language=ar&sensor=true';
 
         console.log('locations data', getCity);
 
@@ -283,9 +279,7 @@ class Locations extends Component {
         });
     }
 
-
     render() {
-
 
         return (
             <Container>

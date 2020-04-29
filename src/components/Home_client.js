@@ -10,7 +10,7 @@ import {
     I18nManager,
     Alert,
     Platform,
-    ImageBackground, ScrollView, FlatList
+    ImageBackground, ScrollView, FlatList,Vibration
 } from "react-native";
 import {Container, Content, Header, Button, Item, Input, Toast, Icon} from 'native-base'
 import styles from '../../assets/styles'
@@ -98,6 +98,16 @@ class Home_client extends Component {
     }
 
     handleNotification(notification) {
+
+        if (notification.remote) {
+            Vibration.vibrate();
+            const notificationId = Notifications.presentLocalNotificationAsync({
+                title: notification.data.title  ? notification.data.title : i18n.t('newNotification'),
+                body: notification.data.body ? notification.data.body : i18n.t('newNotification'),
+                ios: { _displayInForeground: true }
+            });
+        }
+
         if (notification && notification.origin !== 'received') {
             if (notification.data.key === 'price') {
                 this.props.navigation.navigate('showPrice_client', {
