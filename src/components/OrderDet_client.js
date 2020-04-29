@@ -209,7 +209,6 @@ class OrderDet_client extends Component {
                     location  :  data.results[0].formatted_address,
                 });
             } catch (e) {
-                alert(1);
                 console.log(e);
             }
         }
