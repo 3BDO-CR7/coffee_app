@@ -196,7 +196,7 @@ class OrderDet_client extends Component {
             const userLocation                         = { latitude, longitude };
             let getCity                                = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=';
             getCity                                    += userLocation.latitude + ',' + userLocation.longitude;
-            getCity                                    += '&key=AIzaSyCJTSwkdcdRpIXp2yG7DfSRKFWxKhQdYhQ&language=ar&sensor=true';
+            getCity                                    += this.props.user.googleKey;
 
 
             try {
@@ -221,7 +221,7 @@ class OrderDet_client extends Component {
             this.setState({ mapRegion });
             let getCity = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=';
             getCity += mapRegion.latitude + ',' + mapRegion.longitude;
-            getCity += '&key=AIzaSyCJTSwkdcdRpIXp2yG7DfSRKFWxKhQdYhQ&language=ar&sensor=true';
+            getCity += this.props.user.googleKey;
 
             console.log('locations data', getCity);
 

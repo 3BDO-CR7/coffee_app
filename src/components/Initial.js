@@ -14,6 +14,7 @@ class Init extends Component {
     }
 
     async componentWillMount() {
+        
                 if(this.props.lang === null)
                 {
                     this.props.chooseLang('ar');

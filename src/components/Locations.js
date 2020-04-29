@@ -116,7 +116,7 @@ class Locations extends Component {
 
         let getCity   = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=';
         getCity      += this.state.mapRegion.latitude + ',' + this.state.mapRegion.longitude;
-        getCity      += '&key=AIzaSyCJTSwkdcdRpIXp2yG7DfSRKFWxKhQdYhQ&language=ar&sensor=true';
+        getCity      += this.props.user.googleKey;
 
         try {
             const { data } = await axios.get(getCity);
@@ -231,7 +231,7 @@ class Locations extends Component {
         this.setState({ mapRegion });
         let getCity = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=';
         getCity += mapRegion.latitude + ',' + mapRegion.longitude;
-        getCity += '&key=AIzaSyCJTSwkdcdRpIXp2yG7DfSRKFWxKhQdYhQ&language=ar&sensor=true';
+        getCity += this.props.user.googleKey;
 
         console.log('locations data', getCity);
 

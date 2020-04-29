@@ -261,6 +261,7 @@ class Home_client extends Component {
     }
 
     componentWillMount() {
+
         this._getLocationAsync();
         this.props.navigation.closeDrawer();
     }

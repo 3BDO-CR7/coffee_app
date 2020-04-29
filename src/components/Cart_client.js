@@ -74,7 +74,11 @@ class Cart_client extends Component {
                         textAlign:'center'
                     }
                 });
-                this.setState({ isLoaded: false });
+                this.setState({
+                    isLoaded: false ,
+                    lat         : null,
+                    long        : null,
+                });
             });
         }
     };
@@ -201,7 +205,7 @@ class Cart_client extends Component {
                         />
 
                         {
-                            (this.state.restaurants.length === 0 && this.state.isLoaded === false)
+                            (this.state.restaurants.length === 0 && this.state.lat !== null && this.state.isLoaded === false)
                                 ?
                                 <View style={{flex : 1, alignSelf:  'center', marginVertical: 30 }}>
                                     <Image style={{resizeMode : 'contain' , width : 300 , height : 300  }} source={ require('../../assets/images/no_result.png') }/>

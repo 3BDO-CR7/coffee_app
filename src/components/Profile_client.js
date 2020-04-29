@@ -62,6 +62,8 @@ class Profile_client extends Component {
             });
         }
 
+        console.log('googleKey user', this.props.user.googleKey)
+
     }
 
     static navigationOptions = () => ({
