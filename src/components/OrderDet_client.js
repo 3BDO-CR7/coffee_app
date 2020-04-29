@@ -184,56 +184,33 @@ class OrderDet_client extends Component {
     };
 
     async openModal(){
-        if(this.state.lang === null || this.state.long === null){
 
-            Toast.show({
-                text: i18n.t('showMap'),
-                duration: 4000,
-                type: 'danger',
-                textStyle: {
-                    color: "white",
-                    fontFamily : 'cairoBold' ,
-                    textAlign:'center'
-                }
-            });
 
+        this.setState({is_ModalVisible : true});
+
+        let { status } = await Permissions.askAsync(Permissions.LOCATION);
+        if (status     !== 'granted') {
+            alert(i18n.t('open_gps'));
         }else {
-
-            this.setState({is_ModalVisible: true});
-
-            let {status} = await Permissions.askAsync(Permissions.LOCATION);
-            if (status !== 'granted') {
-                alert(i18n.t('open_gps'));
-            } else {
-                const {coords: {latitude, longitude}} = await Location.getCurrentPositionAsync({});
-                const userLocation = {latitude, longitude};
-                let getCity = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=';
-                getCity += userLocation.latitude + ',' + userLocation.longitude;
-                getCity += this.props.user.googleKey;
+            const { coords : { latitude, longitude } } = await Location.getCurrentPositionAsync({});
+            const userLocation                         = { latitude, longitude };
+            let getCity                                = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=';
+            getCity                                    += userLocation.latitude + ',' + userLocation.longitude;
+            getCity                                    += this.props.user.googleKey;
 
 
-                try {
-                    const {data} = await axios.get(getCity);
-                    this.setState({
-                        mapRegion: userLocation,
-                        lat: latitude,
-                        long: longitude,
-                        initMap: false,
-                        location: data.results[0].formatted_address,
-                    });
-                } catch (e) {
-                    Toast.show({
-                        text: i18n.t('showMap'),
-                        duration: 4000,
-                        type: 'danger',
-                        textStyle: {
-                            color: "white",
-                            fontFamily : 'cairoBold' ,
-                            textAlign:'center'
-                        }
-                    });
-                    console.log(e);
-                }
+            try {
+                const { data } = await axios.get(getCity);
+                this.setState({
+                    mapRegion : userLocation,
+                    lat       : latitude,
+                    long      : longitude,
+                    initMap   : false,
+                    location  :  data.results[0].formatted_address,
+                });
+            } catch (e) {
+                alert(1);
+                console.log(e);
             }
         }
     }
